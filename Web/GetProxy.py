@@ -1,7 +1,7 @@
 from Web.Util import getHtmlTree
 
 
-class get_free_proxy():
+class GetFreeProxy():
     def __init__(self):
         pass
 
@@ -20,7 +20,7 @@ class get_free_proxy():
 
 
 if __name__ == '__main__':
-    g = get_free_proxy()
+    g = GetFreeProxy()
     a =g.get_proxy_first()
     for i in a:
         print(i)
