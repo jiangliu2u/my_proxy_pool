@@ -1,4 +1,4 @@
-from Web.Util import getHtmlTree
+from Util.Util import getHtmlTree
 
 
 class GetFreeProxy():

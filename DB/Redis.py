@@ -1,5 +1,4 @@
 import redis
-from Web.Util import Singleton
 import sys
 import random
 import json

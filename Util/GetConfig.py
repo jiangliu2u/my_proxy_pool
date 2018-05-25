@@ -14,4 +14,8 @@ class GetConfig:
     
     @property
     def db_port(self):
-        return self.cf.get('DB','port')
+        return self.cf.getint('DB','port')
+    
+    @property
+    def db_name(self):
+        return self.cf.get('DB','name')

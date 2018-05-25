@@ -1,11 +1,18 @@
-from Web.Util import Singleton
+import sys
+sys.path.append('..')
+
+from Util.GetConfig import GetConfig
+from Util.Util import Singleton
 from DB.Redis import RedisClient
 
-
 class DBClient(metaclass=Singleton):
-    def __init__(self, name, host, port):
-        self.client = RedisClient(name, host, port)
-
+    def __init__(self):
+        self.config = GetConfig()
+        self.__initClient()
+    
+    def __initClient(self):
+        self.client = RedisClient(name=self.config.db_name,host=self.config.db_host,port=self.config.db_port)
+        
     def get(self, **kwargs):
         return self.client.get()
 
@@ -33,7 +40,7 @@ class DBClient(metaclass=Singleton):
     def getNumber(self):
         return self.client.getNumber()
 
-#
-# if __name__ == "__main__":
-#     account = DBClient('proxy', 'localhost', 6379)
-#     print(account.getAll())
+if __name__ == "__main__":
+    account = DBClient('useful_proxy', 'localhost', 6379)
+    print(len(account.getAll()))
+    print(account.delete('58.255.38.115:9797'))
